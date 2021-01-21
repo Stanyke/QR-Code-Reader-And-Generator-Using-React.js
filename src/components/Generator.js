@@ -13,15 +13,17 @@ export default class Generator extends Component {
 
     componentDidMount(){
         document.getElementById('failedParagraph').style.display = 'none'
+        document.getElementById('canvas').style.display = 'none'
     }
     
     render() {
         return (
             <div className="container">
 
+                <h2 class="text-center text-primary">QR Code Generator</h2>
+                
                 <div class="generatorPage">
                     
-                    <h2 class="text-center text-primary">QR Code Generator</h2>
 
                     <form className="pt-3" onSubmit={this.submitInputValue}>
                         <input type="text" onChange={(e) => this.setState({userInput: e.target.value})} className="form-control" required />
@@ -29,9 +31,9 @@ export default class Generator extends Component {
                         <button type="submit" className="mt-4 form-control btn btn-danger">Submit</button>
                     </form>
 
-                    <canvas id="canvas" className="mt-3" align="center"></canvas>
+                    <div align="center" className="pt-3"><canvas id="canvas"></canvas></div>
                     
-                    <p className="mt-3" id="failedParagraph">Failed to load QR Code, try again.</p>
+                    <p className="pt-3" id="failedParagraph">Failed to load QR Code, try again.</p>
 
                 </div>
             </div>
@@ -55,6 +57,11 @@ export default class Generator extends Component {
                 canvas.style.display = 'block';
                 failedParagraph.style.display = 'none'
             }
+        })
+
+        QRCode.toString('http://www.google.com', function (err, string) {
+        if (err) throw err
+        console.log(string)
         })
     }
 }

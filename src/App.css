@@ -1,9 +1,14 @@
+body{
+  background: #d5e9e5;
+}
+
 .container{
   margin-top: 100px;
 }
 
 .generatorPage{
   max-width: 500px;
+  height: auto;
   margin: auto;
   box-shadow:
   0 2.8px 2.2px rgba(0, 0, 0, 0.034),
