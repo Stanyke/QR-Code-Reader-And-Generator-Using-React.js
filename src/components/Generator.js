@@ -23,7 +23,7 @@ export default class Generator extends Component {
             <div>
                 <div className="pb-5">
                     <nav className="navbar navbar-expand-sm fixed-top d-flex justify-content-center align-items-center">
-                        <Link className="navbar-brand" to="/">
+                        <Link className="navbar-brand text-danger" to="/">
                         QR Code Generator/Scanner
                         </Link>
 
@@ -39,8 +39,8 @@ export default class Generator extends Component {
                         <ul class="navbar-nav ml-auto">
                             <br/>
                             <li class="nav-item">
-                            <Link className="btn btn-outline-info nav-link p-2" to="/scanner">
-                                QR Scanner
+                            <Link className="btn btn-primary nav-link p-2" to="/scanner">
+                                QR Code Scanner
                             </Link>
                             </li>
                         </ul>
@@ -55,7 +55,7 @@ export default class Generator extends Component {
                         
 
                         <form className="pt-3" onSubmit={this.submitInputValue}>
-                            <input type="text" onChange={(e) => this.setState({userInput: e.target.value})} className="form-control" required />
+                            <input type="text" placeholder="Type then hit the button/Enter key" onChange={(e) => this.setState({userInput: e.target.value})} className="form-control" required />
 
                             <button type="submit" className="mt-4 form-control btn btn-danger">Submit</button>
                         </form>

@@ -1,7 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
+import QR_Code_Scanner from '../Helpers/Scanner';
+
 export default class Reader extends Component {
+
+    componentDidMount(){
+        QR_Code_Scanner()
+
+        //Disable console.log file returned from the qr_packed.js in the index.html page in public directory
+        window.console = (function(originalConsole){
+            var api = {};
+            var props = Object.keys(originalConsole);
+            for (var i=0; i<props.length; i++) {
+                api[props[i]] = function(){};
+            }
+            return api;
+        })(window.console);
+    }
+
     render() {
         const styles = {"color": "#ffffff"}
         return (
@@ -24,7 +41,7 @@ export default class Reader extends Component {
                         <ul class="navbar-nav ml-auto">
                             <br/>
                             <li class="nav-item">
-                            <Link className="btn btn-outline-info nav-link p-2" to="/">
+                            <Link className="btn btn-primary nav-link p-2" to="/">
                                 QR Code Generator
                             </Link>
                             </li>
@@ -32,12 +49,22 @@ export default class Reader extends Component {
                         </div>
                     </nav>
                 </div>
-                <div className="container">
+                <div className="container mb-5">
 
-                    <h2 class="text-center text-primary">QR Scanner</h2>
+                    <h2 class="text-center text-primary">QR Code Scanner</h2>
                     
+                    <div align="center">
+                        <canvas hidden="" id="qr-canvas"></canvas>
+                    </div>
+                    
+                    <div id="qr-result" hidden="true">
+                        <span id="outputData"></span>
+                    </div>
                     
                 </div>
+
+                <button className="scanButton fixed-bottom" id="btn-scan-qr">Scan QR Code</button>
+
            </div>
         )
     }

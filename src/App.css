@@ -1,9 +1,14 @@
 body{
-  background: #d5e9e5;
+  background: #f3f3f3;
 }
 
 .container{
   margin-top: 100px;
+}
+
+nav{
+  background: #1c1b1b;
+  color: tomato;
 }
 
 .generatorPage{
@@ -19,4 +24,34 @@ body{
   0 100px 80px rgba(112, 94, 94, 0.12);
   border-radius: 20px;
   padding: 20px;
+}
+
+
+#qr-canvas {
+  width: calc(100% - 20px);
+  max-width: 300px;
+}
+
+#qr-result {
+  font-size: 1.2em;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  background-color: #333333;
+  color: white;
+}
+
+.scanButton{
+  background: tomato;
+  color: white;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  outline: 0;
+  border: none;
+  height: 50px;
+}
+
+.scanButton:focus{
+  outline: 0;
+  border: none;
 }
