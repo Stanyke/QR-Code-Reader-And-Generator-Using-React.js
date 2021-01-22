@@ -25,7 +25,7 @@ export default class Reader extends Component {
             <div>
                 <div className="pb-5">
                     <nav className="navbar navbar-expand-sm fixed-top d-flex justify-content-center align-items-center">
-                        <Link className="navbar-brand" to="/">
+                        <Link className="navbar-brand text-danger" to="/">
                         QR Code Generator/Scanner
                         </Link>
 
