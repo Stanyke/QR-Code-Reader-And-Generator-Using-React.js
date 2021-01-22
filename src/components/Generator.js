@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 const QRCode = require('qrcode')
 
 export default class Generator extends Component {
@@ -17,26 +18,55 @@ export default class Generator extends Component {
     }
     
     render() {
+        const styles = {"color": "#ffffff"}
         return (
-            <div className="container">
+            <div>
+                <div className="pb-5">
+                    <nav className="navbar navbar-expand-sm fixed-top d-flex justify-content-center align-items-center">
+                        <Link className="navbar-brand" to="/">
+                        QR Code Generator/Scanner
+                        </Link>
 
-                <h2 class="text-center text-primary">QR Code Generator</h2>
-                
-                <div class="generatorPage">
-                    
-
-                    <form className="pt-3" onSubmit={this.submitInputValue}>
-                        <input type="text" onChange={(e) => this.setState({userInput: e.target.value})} className="form-control" required />
-
-                        <button type="submit" className="mt-4 form-control btn btn-danger">Submit</button>
-                    </form>
-
-                    <div align="center" className="pt-3"><canvas id="canvas"></canvas></div>
-                    
-                    <p className="pt-3" id="failedParagraph">Failed to load QR Code, try again.</p>
-
+                        <button
+                        class="navbar-toggler navbar-dark"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapsibleNavbar"
+                        >
+                        <span class="navbar-toggler-icon" style={styles}></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav ml-auto">
+                            <br/>
+                            <li class="nav-item">
+                            <Link className="btn btn-outline-info nav-link p-2" to="/scanner">
+                                QR Scanner
+                            </Link>
+                            </li>
+                        </ul>
+                        </div>
+                    </nav>
                 </div>
-            </div>
+                <div className="container">
+
+                    <h2 class="text-center text-primary">QR Code Generator</h2>
+                    
+                    <div class="generatorPage">
+                        
+
+                        <form className="pt-3" onSubmit={this.submitInputValue}>
+                            <input type="text" onChange={(e) => this.setState({userInput: e.target.value})} className="form-control" required />
+
+                            <button type="submit" className="mt-4 form-control btn btn-danger">Submit</button>
+                        </form>
+
+                        <div align="center" className="pt-3"><canvas id="canvas"></canvas></div>
+                        
+                        <p className="pt-3" id="failedParagraph">Failed to load QR Code, try again.</p>
+
+                    </div>
+                </div>
+           </div>
         )
     }
 
@@ -57,11 +87,6 @@ export default class Generator extends Component {
                 canvas.style.display = 'block';
                 failedParagraph.style.display = 'none'
             }
-        })
-
-        QRCode.toString('http://www.google.com', function (err, string) {
-        if (err) throw err
-        console.log(string)
         })
     }
 }
